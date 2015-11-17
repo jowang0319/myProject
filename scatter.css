@@ -1,0 +1,25 @@
+.axis path,
+.axis line {
+        fill: none;
+        stroke: black;
+        shape-rendering: crispEdges;
+
+      }
+
+.axis text,
+.label {
+        font-family: sans-serif;
+        font-size: 11px;
+      }
+
+circle{
+  fill-opacity: 70%;
+}
+
+circle.unfocused{
+  fill-opacity: 20%;
+}
+
+circle.focused {
+  fill-opacity:100%;
+}
