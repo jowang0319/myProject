@@ -29,6 +29,10 @@ h1 {
     stroke-width:0.5px;
 }
 
+.selected{
+  background-color: red;
+}
+
 svg path:hover {
 	opacity: 0.7;
 }

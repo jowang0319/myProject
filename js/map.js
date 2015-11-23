@@ -4,7 +4,8 @@ function draw_map(){
 
 	var svg = d3.select('#map').append('svg')
 			.attr('width',width)
-			.attr('height',height);
+			.attr('height',height)
+			.attr("id","svgMap");
 
 	var projection = d3.geo.mercator()
 		.scale(140)

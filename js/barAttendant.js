@@ -1,5 +1,5 @@
 
-function draw_bar2(){
+function draw_bar2(dataBar2){
 // this is the size of the svg container -- the white part
 var fullwidth = 1000,
 	fullheight = 500;
@@ -31,15 +31,11 @@ var svg = d3.select("#bar2")
 			.attr("height", fullheight);
 
 
-d3.csv("data/skilledAttendant.csv", function(error, data) {
 
-	if (error) {
-		console.log("error reading file");
-	}
 
 	var data1 = []
 
-	data.forEach(function(d){
+	dataBar2.forEach(function(d){
 		if(d.skilledAttendant != "_"){
 			data1.push({
 				country : d.country,
@@ -53,7 +49,7 @@ d3.csv("data/skilledAttendant.csv", function(error, data) {
 		return d3.descending(+a.skilledAttendant, +b.skilledAttendant);
 	});
 
-	console.log(data1)
+	//console.log(data1)
 
 	// in this case, i know it's out of 100 because it's percents.
 	widthScale.domain([ 0, d3.max(data1, function(d) {
@@ -76,6 +72,9 @@ d3.csv("data/skilledAttendant.csv", function(error, data) {
 			return widthScale(d.skilledAttendant);
 		})
 		.attr("height", heightScale.rangeBand())
+		.attr("id",function(d){
+			return d.country;
+		})
 		.append("title")  
 		.text(function(d) {
 			return d.country + "skilled attendance rate " + d.skilledAttendant + " per 100 person";
@@ -134,7 +133,7 @@ d3.csv("data/skilledAttendant.csv", function(error, data) {
 
         	// You could also use tick formatting to get a % sign on each axis tick
 
-});
+
 }//end of draw bars
 
-draw_bar2();
+

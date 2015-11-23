@@ -1,5 +1,5 @@
 
-function draw_bar(){
+function draw_bar(dataBar1){
 // this is the size of the svg container -- the white part
 var fullwidth = 1000,
 	fullheight = 500;
@@ -31,26 +31,24 @@ var svg = d3.select("#bar1")
 			.attr("height", fullheight);
 
 
-d3.csv("data/data2.csv", function(error, data) {
 
-	if (error) {
-		console.log("error reading file");
-	}
 
-	data.sort(function(a, b) {
+
+
+	dataBar1.sort(function(a, b) {
 		return d3.descending(+a.youthLiteracyRate, +b.youthLiteracyRate);
 	});
 
 	// in this case, i know it's out of 100 because it's percents.
-	widthScale.domain([ 0, d3.max(data, function(d) {
+	widthScale.domain([ 0, d3.max(dataBar1, function(d) {
 					return +d.youthLiteracyRate;
 				}) ]);
 
 	// js map: will make a new array out of all the d.name fields
-	heightScale.domain(data.map(function(d) { return d.country; } ));
+	heightScale.domain(dataBar1.map(function(d) { return d.country; } ));
 
 	var rects = svg.selectAll("rect")
-					.data(data)
+					.data(dataBar1)
 					.enter()
 					.append("rect");
 
@@ -62,6 +60,9 @@ d3.csv("data/data2.csv", function(error, data) {
 			return widthScale(d.youthLiteracyRate);
 		})
 		.attr("height", heightScale.rangeBand())
+		.attr("id",function(d){
+			return d.country;
+		})
 		.append("title")  
 		.text(function(d) {
 			return d.country + "youth literacy rate " + d.youthLiteracyRate + " per 100 person";
@@ -120,7 +121,7 @@ d3.csv("data/data2.csv", function(error, data) {
 
         	// You could also use tick formatting to get a % sign on each axis tick
 
-});
+
 }//end of draw bars
 
-draw_bar();
+
