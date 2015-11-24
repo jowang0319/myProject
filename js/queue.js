@@ -1,6 +1,23 @@
-d3.selectAll("path.countries").on("click",function(){
-	console.log(this);
-})
+var selectedCountry = null;
+
+function onClick(d){
+	//console.log(d.id);
+	selectedCountry = d.id;
+	console.log(selectedCountry);
+	d3.selectAll("g.lines")
+		.each(function(d){
+		//console.log(d);
+		if (d.country === "World"){
+			d3.select(this).select("path.line").classed("focused1", true);
+		}
+		else if (d.countryCode === selectedCountry){
+			d3.select(this).select("path.line").classed("focused2", true);
+		}
+		else{
+			d3.select(this).select("path.line").classed("focused2",false).classed("unfocused", true);
+		}
+	});
+	};
 
 var dataBar1 = [];
 var dataBar2 = [];
@@ -17,6 +34,8 @@ function display (error,barData,barData2){
 		draw_bar2(dataBar2);
 	}
 }
+
+
 
 queue()
   .defer(d3.csv, "data/data2.csv")

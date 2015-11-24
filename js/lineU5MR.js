@@ -55,13 +55,15 @@ data.forEach(function(d,i){
 		if (d[y]){
 			mortality.push({
 				year: y,
-				amount:d[y]
+				amount:d[y],
+				countryCode: d.countryCode
 			});
 		}
 	});
 	dataSet.push({
 		country: d.country,
-		rates: mortality
+		rates: mortality,
+		countryCode: d.countryCode
 	});
 
 });
@@ -94,7 +96,12 @@ groups.selectAll("path")
 	.enter()
 	.append("path")
 	.attr("class","line")
-	.attr("d",line);
+	.attr("d",line)
+	.attr("id",function(d){
+		return d.countryCode;
+	});
+
+d3.selectAll("path.line").classed("unfocused",true);
 
 svg.append("g")
 	.attr("class","x axis")

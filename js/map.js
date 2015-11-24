@@ -39,10 +39,10 @@ function draw_map(){
 	function getColor(d){
 		var dataRow = countryById.get(d.id);
 		if (dataRow){
-			console.log(dataRow);
+			//console.log(dataRow);
 			return colors(dataRow.rate);
 		} else {
-			console.log("no dataRow", d);
+			//console.log("no dataRow", d);
 			return "#ccc";
 		}
 	}
@@ -74,9 +74,10 @@ function draw_map(){
 			.attr("id", function (d,i){return d.id;})
 			.attr('d',path)
 			.attr('fill',function(d,i){
-				console.log(d.properties.name);
+				//console.log(d.properties.name);
 				return getColor(d);
 			})
+			.on("click",onClick);
 			//.append("title")
 			//.text(function(d){
 			//	return getText(d);
@@ -111,6 +112,7 @@ function draw_map(){
     	.on("mouseover", mouseoverFunc)
         .on("mousemove", mousemoveFunc)
         .on("mouseout", mouseoutFunc);
+
 
 	function mouseoverFunc(d){
 		console.log("moused over",getText(d));

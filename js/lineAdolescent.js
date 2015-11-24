@@ -52,23 +52,25 @@ data.forEach(function(d,i){
 	var fertilityRate = [];
 
 	years.forEach(function(y){
-		//console.log(d.country)
+		//console.log(d.countryCode)
 		if (d[y]){
 			fertilityRate.push({
 				year: y,
 				amount:d[y],
-				country: d.country
+				country: d.country,
+				countryCode:d.countryCode
 			});
 		}
 	});
 	dataSet.push({
 		country: d.country,
-		rates: fertilityRate
+		rates: fertilityRate,
+		countryCode: d.countryCode
 	});
 
 });
 
-console.log(dataSet);
+//console.log(dataSet);
 
 xScaleLine.domain(
 	d3.extent(years,function(d){
@@ -89,7 +91,7 @@ var groupsLine = svgLine.selectAll("g.lines")
 	.append("g")
 	.attr("class","lines")
 	.attr("id",function(d){
-		return d.country
+		return d.countryCode
 	});
 
 groupsLine.selectAll("path")
@@ -146,19 +148,7 @@ svgLine.append("text")
 		}
 	})*/
 
-d3.selectAll("path.line")
-	.attr("class",function(d){
-		console.log(d);
-		if (d.country == "World"){
-			return "focused1";
-		}
-		else if (d.country == "Niger"){
-			return "focused2"
-		}
-		else{
-			return "unfocused"
-		}
-	});
+d3.selectAll("path.line").classed("unfocused",true);
 
 groupsLine.append("text")
     .attr("transform", function(d){
