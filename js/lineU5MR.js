@@ -148,7 +148,7 @@ svg.append("text")
 		}
 	})*/
 
-groups.append("text")
+/*groups.append("text")
     .attr("transform", function(d){
         if (d.country === "Niger" || d.country === "World") {
             console.log(d);
@@ -162,7 +162,7 @@ groups.append("text")
                     		return d.country;
                     	}
                     })
-    .attr("class","highlightCountry");
+    .attr("class","highlightCountry");*/
 
 
 

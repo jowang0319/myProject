@@ -152,19 +152,19 @@ d3.selectAll("path.line").classed("unfocused",true);
 
 groupsLine.append("text")
     .attr("transform", function(d){
-        if (d.country === "Niger" || d.country === "World") {
-            //console.log(d);
+        if (d.rates[53]) {
+            console.log(d);
             return "translate(" + (widthLine - marginLine.right - marginLine.left + 5) + ", "+ yScaleLine(+d.rates[53].amount) +")";
                     	}
 
                     })
     .attr("dy",".35em")
     .text(function(d) { 
-        if (d.country==="Niger" || d.country === "World") {
+        if (d.rates[53]) {
                     		return d.country;
                     	}
                     })
-    .attr("class","highlightCountry");
+    .attr("class","labelOnLine");
 
 
 
