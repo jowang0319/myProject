@@ -1,72 +1,132 @@
-
-function draw_bar(dataBar1){
-// this is the size of the svg container -- the white part
-var fullwidth = 1000,
-	fullheight = 500;
+var fullwidth = 300,
+	fullheight = 180;
 
 // these are the margins around the graph. Axes labels go in margins.
-var margin = {top: 20, right: 25, bottom: 20, left: 200};
+var marginBar = {top: 20, right: 25, bottom: 20, left: 20};
 
-var width = fullwidth - margin.left - margin.right,
-   	height = fullheight - margin.top - margin.bottom;
+var widthBar = fullwidth - marginBar.left - marginBar.right,
+   	heightBar = fullheight - marginBar.top - marginBar.bottom;
 
 var widthScale = d3.scale.linear()
-					.range([0, width]);
+					.range([0, widthBar]).domain([0,100]);
 
 var heightScale = d3.scale.ordinal()
-					.rangeRoundBands([ margin.top, height], 0.2);
+					.rangeRoundBands([ marginBar.top, heightBar], 0.2);
 
-var xAxis = d3.svg.axis()
-				.scale(widthScale)
-				.orient("bottom");
 
-var yAxis = d3.svg.axis()
-				.scale(heightScale)
-				.orient("left")
-				.innerTickSize([0]);
-
-var svg = d3.select("#bar1")
+var barEducation = d3.select("#bar1")
 			.append("svg")
 			.attr("width", fullwidth)
 			.attr("height", fullheight);
 
+function draw_bar(dataFilter1){
+// this is the size of the svg container -- the white part
 
 
+console.log(dataFilter1);
 
+	var xAxis = d3.svg.axis()
+				.scale(widthScale)
+				.ticks(1)
+				.orient("bottom");
 
+	var yAxis = d3.svg.axis()
+				.scale(heightScale)
+				.orient("left")
+				.innerTickSize([0]);
 
-	dataBar1.sort(function(a, b) {
-		return d3.descending(+a.youthLiteracyRate, +b.youthLiteracyRate);
-	});
+	barEducation.append("g")
+		.attr("class", "x axis")
+		.attr("transform", "translate(" + marginBar.left + "," + heightBar + ")")
+		.call(xAxis);
 
-	// in this case, i know it's out of 100 because it's percents.
-	widthScale.domain([ 0, d3.max(dataBar1, function(d) {
-					return +d.youthLiteracyRate;
-				}) ]);
+	barEducation.append("g")
+		.attr("class", "y axis")
+		.attr("transform", "translate(" + marginBar.left + ",0)")
+		.call(yAxis);
 
-	// js map: will make a new array out of all the d.name fields
-	heightScale.domain(dataBar1.map(function(d) { return d.country; } ));
+	// Label below x axis
+	barEducation.append("text")
+		.attr("class", "xlabel")
+        .attr("transform", "translate(" + (marginBar.left + widthBar / 2) + " ," +
+        				(heightBar + marginBar.bottom) + ")")
+        .style("text-anchor", "middle")
+        .attr("dy", "12")
+        .text("Percent");
 
-	var rects = svg.selectAll("rect")
-					.data(dataBar1)
-					.enter()
-					.append("rect");
+    var rects = barEducation.selectAll("rect")
+					.data(dataFilter1, function(d) {return d.country;});
 
-	rects.attr("x", margin.left)
-		.attr("y", function(d){
-			return heightScale(d.country)
+	/*rects
+		.enter()
+		.append("rect")
+		.attr("x", marginBar.left)
+		.attr("y", function(d,i){
+			return i*40
 		})
-		.attr("width", function(d) {
-			return widthScale(d.youthLiteracyRate);
-		})
-		.attr("height", heightScale.rangeBand())
+		.attr("width",0)
+		.attr("height",20)
 		.attr("id",function(d){
 			return d.country;
+		});*/
+
+     update_bars(dataFilter1);
+
+} // end of draw_bar
+
+
+function update_bars(data) {
+
+	//console.log(data);
+
+	heightScale.domain(data.map(function(d) { return d.country; } ));
+
+	var rects = barEducation.selectAll("rect")
+					.data(data, function(d) {return d.country;});
+
+	rects
+		.enter()
+		.append("rect")
+		.attr("x", marginBar.left)
+		.attr("y", function(d,i){
+			return i*60 + 25
 		})
-		.append("title")  
+		.attr("width",0)
+		.attr("height", 40)
+		.attr("id",function(d){
+			return d.country;
+		});
+
+	rects
+		.transition()
+		.duration(1000)
+		.attr("width", function(d) {
+			return widthScale(+d.youthLiteracyRate);
+		});
+		/*.append("title")  
 		.text(function(d) {
 			return d.country + "youth literacy rate " + d.youthLiteracyRate + " per 100 person";
-		});
+		});*/
+
+	rects
+		.exit()
+		.transition()
+		.duration(1000)
+		.attr("width",0)
+		.attr("opacity",0)
+		.remove();
+
+	d3.selectAll("rect")
+        .attr('fill',function(d){
+            if (d.country === "World"){
+               	return "blue";
+       		} 
+            else {
+                return "orange";
+            }})
+        .attr("opacity",0.5);
+
+	} // end update
 
 	/*var labelBar = svg.selectAll("text")
             			.data(data)
@@ -88,40 +148,9 @@ var svg = d3.select("#bar1")
          	.attr("font-size", "11px")
        		.attr("fill", "#000000"); */
 
-    d3.selectAll("rect")
-        .attr('fill',function(d){
-            if (d.country === "World"){
-               	return "blue";
-       		} else if(d.country === "Niger"){
-                return "orange"
-            }
-            else {
-                return "grey";
-            }})
-        .attr("opacity",0.5);
 
-	svg.append("g")
-		.attr("class", "x axis")
-		.attr("transform", "translate(" + margin.left + "," + height + ")")
-		.call(xAxis);
-
-	svg.append("g")
-		.attr("class", "y axis")
-		.attr("transform", "translate(" + margin.left + ",0)")
-		.call(yAxis);
-
-	// Label below x axis
-	svg.append("text")
-		.attr("class", "xlabel")
-        .attr("transform", "translate(" + (margin.left + width / 2) + " ," +
-        				(height + margin.bottom) + ")")
-        .style("text-anchor", "middle")
-        .attr("dy", "12")
-        .text("Percent");
 
         	// You could also use tick formatting to get a % sign on each axis tick
 
-
-}//end of draw bars
 
 

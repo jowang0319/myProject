@@ -1,7 +1,12 @@
+var barAttendant = d3.select("#bar2")
+			.append("svg")
+			.attr("width", fullwidth)
+			.attr("height", fullheight);
 
-function draw_bar2(dataBar2){
+function draw_bar2(dataFilter2){
+	console.log(dataFilter2);
 // this is the size of the svg container -- the white part
-var fullwidth = 1000,
+/*var fullwidth = 1000,
 	fullheight = 500;
 
 // these are the margins around the graph. Axes labels go in margins.
@@ -14,57 +19,111 @@ var widthScale = d3.scale.linear()
 					.range([0, width]);
 
 var heightScale = d3.scale.ordinal()
-					.rangeRoundBands([ margin.top, height], 0.2);
+					.rangeRoundBands([ margin.top, height], 0.2);*/
 
-var xAxis = d3.svg.axis()
+	var xAxis = d3.svg.axis()
 				.scale(widthScale)
+				.ticks(1)
 				.orient("bottom");
 
-var yAxis = d3.svg.axis()
+	var yAxis = d3.svg.axis()
 				.scale(heightScale)
 				.orient("left")
 				.innerTickSize([0]);
 
-var svg = d3.select("#bar2")
+	/*var svg = d3.select("#bar2")
 			.append("svg")
 			.attr("width", fullwidth)
-			.attr("height", fullheight);
+			.attr("height", fullheight);*/
 
 
+	barAttendant.append("g")
+		.attr("class", "x axis")
+		.attr("transform", "translate(" + marginBar.left + "," + heightBar + ")")
+		.call(xAxis);
 
+	barAttendant.append("g")
+		.attr("class", "y axis")
+		.attr("transform", "translate(" + marginBar.left + ",0)")
+		.call(yAxis);
 
-	var data1 = []
+	// Label below x axis
+	barAttendant.append("text")
+		.attr("class", "xlabel")
+        .attr("transform", "translate(" + (marginBar.left + widthBar / 2) + " ," +
+        				(heightBar + marginBar.bottom) + ")")
+        .style("text-anchor", "middle")
+        .attr("dy", "12")
+        .text("Percent");
 
-	dataBar2.forEach(function(d){
+    var rects = barAttendant.selectAll("rect")
+					.data(dataFilter2)
+
+	/*data1.sort(function(a, b) {
+		return d3.descending(+a.skilledAttendant, +b.skilledAttendant);
+	});*/
+
+	//console.log(data1)
+
+	// in this case, i know it's out of 100 because it's percents.
+	/*widthScale.domain([ 0, d3.max(data1, function(d) {
+					return +d.skilledAttendant;
+				}) ]);*/
+
+	// js map: will make a new array out of all the d.name fields
+	/*heightScale.domain(data1.map(function(d) { return d.country; } ));*/
+
+	update_bars(dataFilter2);
+
+}; // End of draw
+
+function update_bars2(data){
+
+	console.log(data);
+
+	/*var data1 = []
+
+	data.forEach(function(d){
 		if(d.skilledAttendant != "_"){
 			data1.push({
 				country : d.country,
 				skilledAttendant : d.skilledAttendant
 			})
 		}
-	})
+	})*/
 
+	var rects = barAttendant.selectAll("rect")
+					.data(data,function(d){return d.country;});
 
-	data1.sort(function(a, b) {
-		return d3.descending(+a.skilledAttendant, +b.skilledAttendant);
-	});
+	rects
+		.enter()
+		.append("rect")
+		.attr("x", marginBar.left)
+		.attr("y", function(d,i){
+			return i*60 + 25
+		})
+		.attr("width",0)
+		.attr("height", 40)
+		.attr("id",function(d){
+			return d.country;
+		});
 
-	//console.log(data1)
+	rects
+		.transition()
+		.duration(1000)
+		.attr("width", function(d) {
+			return widthScale(+d.skilledAttendant);
+		});
 
-	// in this case, i know it's out of 100 because it's percents.
-	widthScale.domain([ 0, d3.max(data1, function(d) {
-					return +d.skilledAttendant;
-				}) ]);
+	rects
+		.exit()
+		.transition()
+		.duration(1000)
+		.attr("width",0)
+		.attr("opacity",0)
+		.remove();
 
-	// js map: will make a new array out of all the d.name fields
-	heightScale.domain(data1.map(function(d) { return d.country; } ));
-
-	var rects = svg.selectAll("rect")
-					.data(data1)
-					.enter()
-					.append("rect");
-
-	rects.attr("x", margin.left)
+	/*rects.attr("x", marginBar.left)
 		.attr("y", function(d){
 			return heightScale(d.country)
 		})
@@ -78,7 +137,7 @@ var svg = d3.select("#bar2")
 		.append("title")  
 		.text(function(d) {
 			return d.country + "skilled attendance rate " + d.skilledAttendant + " per 100 person";
-		});
+		});*/
 
 	/*var labelBar = svg.selectAll("text")
             			.data(data)
@@ -104,36 +163,15 @@ var svg = d3.select("#bar2")
         .attr('fill',function(d){
             if (d.country === "World"){
                	return "blue";
-       		} else if(d.country === "Niger"){
-                return "orange"
-            }
+       		} 
             else {
-                return "grey";
+                return "orange";
             }})
         .attr("opacity",0.5);
-
-	svg.append("g")
-		.attr("class", "x axis")
-		.attr("transform", "translate(" + margin.left + "," + height + ")")
-		.call(xAxis);
-
-	svg.append("g")
-		.attr("class", "y axis")
-		.attr("transform", "translate(" + margin.left + ",0)")
-		.call(yAxis);
-
-	// Label below x axis
-	svg.append("text")
-		.attr("class", "xlabel")
-        .attr("transform", "translate(" + (margin.left + width / 2) + " ," +
-        				(height + margin.bottom) + ")")
-        .style("text-anchor", "middle")
-        .attr("dy", "12")
-        .text("Percent");
 
         	// You could also use tick formatting to get a % sign on each axis tick
 
 
-}//end of draw bars
+}//end of update bars
 
 

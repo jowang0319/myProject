@@ -164,6 +164,23 @@ svg.append("text")
                     })
     .attr("class","highlightCountry");*/
 
+groups.append("text")
+    .attr("transform", function(d){
+        if (d.rates[25]) {
+            console.log(d);
+            return "translate(" + (width - margin.right - margin.left + 2) + ", "+ yScale(+d.rates[25].amount) +")";
+                    	}
+
+                    })
+    .attr("dy",".35em")
+    .text(function(d) { 
+        if (d.rates[25]) {
+                    		return d.country;
+                    	}
+                    })
+    .attr("class","labelOnLine")
+    .attr("opacity",0);
+
 
 
 /*d3.selectAll("g.lines")

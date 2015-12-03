@@ -16,7 +16,7 @@ var yScaleLine = d3.scale.linear()
 var xAxisLine2 = d3.svg.axis()
 	.scale(xScaleLine)
 	.orient("bottom")
-	.ticks(3)
+	.ticks(2)
 	.tickFormat(function(d){
 		return dateFormat(d);
 	})
@@ -24,7 +24,7 @@ var xAxisLine2 = d3.svg.axis()
 var yAxisLine2 = d3.svg.axis()
 	.scale(yScaleLine)
 	.orient("left")
-	.ticks(3)
+	.ticks(2)
 	.innerTickSize([0]);
 
 var line = d3.svg.line()
@@ -154,7 +154,7 @@ groupsLine.append("text")
     .attr("transform", function(d){
         if (d.rates[53]) {
             console.log(d);
-            return "translate(" + (widthLine - marginLine.right - marginLine.left + 5) + ", "+ yScaleLine(+d.rates[53].amount) +")";
+            return "translate(" + (widthLine - marginLine.right - marginLine.left + 2) + ", "+ yScaleLine(+d.rates[53].amount) +")";
                     	}
 
                     })
@@ -164,7 +164,8 @@ groupsLine.append("text")
                     		return d.country;
                     	}
                     })
-    .attr("class","labelOnLine");
+    .attr("class","labelOnLine")
+    .attr("opacity",0);
 
 
 

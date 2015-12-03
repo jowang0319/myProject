@@ -1,15 +1,15 @@
 function draw_map(){
-	var width = 1200,
-	height = 800;
+	var width1 = 1200,
+	height1 = 800;
 
 	var svg = d3.select('#map').append('svg')
-			.attr('width',width)
-			.attr('height',height)
+			.attr('width',width1)
+			.attr('height',height1)
 			.attr("id","svgMap");
 
 	var projection = d3.geo.mercator()
 		.scale(140)
-		.translate([width/2-160,height/2+20]);
+		.translate([width1/2-160,height1/2+20]);
 
 	var path = d3.geo.path()
 		.projection(projection);
