@@ -52,10 +52,11 @@ function draw_label(yValue){
 
 // ******* Change the showX and showY function for some cases ********
 var update = function(value) {
-  var showScatter = "none";
+  
   var country = null;
   var localdata = getData(data);
   colorFunction = colorsNone;
+  var showScatter = "none";
   //var region = null;
   switch(value) {
     case 1:
@@ -131,7 +132,7 @@ var update = function(value) {
       //region: null;
       break;
   }
-  draw_circles(localdata); // we can update the data if we want in the cases.
+  draw_circles(localdata,showScatter); // we can update the data if we want in the cases.
   focus_country(country); // this applies a highlight on a country.
   draw_label(yValue);
   //focus_region(region);
