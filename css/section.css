@@ -1,0 +1,53 @@
+section{
+    background-color:#bbb;
+    width:100%;
+    height:700px;
+    border-bottom:2px solid #eee;
+}
+#arrow{
+    position:fixed;
+    z-index: 10000;
+}
+
+#first{
+	background-color: red;
+}
+#second{
+	background-color:green;
+}
+#third{
+	background-color: blue;
+}
+#fourth{
+	background-color: orange;
+}
+#fifth{
+	background-color: grey;
+}
+
+p.text {
+	text-align: center;
+	margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-top: 15%;
+    margin-bottom:15%;
+}
+
+h1.title{
+	font-size: 50px;
+	text-align: center;
+	margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-bottom: 1%;
+    margin-top: 15%;
+}
+
+h4.title{
+	font-size: 30px;
+	text-align: center;
+	margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
