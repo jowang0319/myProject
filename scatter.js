@@ -79,7 +79,7 @@ svg.append("g")
     .attr("class", "label")
     .text(label);*/
 
-function draw_circles(data，showScatter){
+function draw_circles(data,showScatter){
 	//console.log(data);
 	console.log(showScatter);
 	svg.style("display",showScatter);
