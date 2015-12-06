@@ -1,27 +1,42 @@
-section{
-    background-color:#bbb;
-    width:100%;
-    height:700px;
-    border-bottom:2px solid #eee;
-}
+
 #arrow{
     position:fixed;
     z-index: 10000;
 }
 
 #first{
+    background-color:#bbb;
+    width:100%;
+    height:700px;
+    border-bottom:2px solid #eee;
 	background-color: red;
 }
 #second{
+    background-color:#bbb;
+    width:100%;
+    height:700px;
+    border-bottom:2px solid #eee;
 	background-color:green;
 }
 #third{
+    background-color:#bbb;
+    width:100%;
+    height:700px;
+    border-bottom:2px solid #eee;
 	background-color: blue;
 }
 #fourth{
+    background-color:#bbb;
+    width:100%;
+    height:700px;
+    border-bottom:2px solid #eee;
 	background-color: orange;
 }
 #fifth{
+    background-color:#bbb;
+    width:100%;
+    height:700px;
+    border-bottom:2px solid #eee;
 	background-color: grey;
 }
 
