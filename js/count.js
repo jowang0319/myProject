@@ -4,7 +4,7 @@ var start_val = 72.5432,
     end_val = [31.8350]
     end_val2 = [2015];
 
-var qSVG = d3.select("#number").append("svg").attr("width","100%").attr("height","100%");
+var qSVG = d3.select("#number").append("svg").attr("width","100%").attr("height",200);
 
 qSVG.selectAll("#txt2")
     .data(end_val2)
@@ -27,7 +27,7 @@ qSVG.selectAll("#txt2")
             };
         });
 
-var qSVG = d3.select("#number").append("svg").attr("width","100%").attr("height","100%");
+var qSVG = d3.select("#number").append("svg").attr("width","100%").attr("height",100);
 
 qSVG.selectAll("#txt")
     .data(end_val)
@@ -36,8 +36,8 @@ qSVG.selectAll("#txt")
     .text(start_val)
     .attr("class", "count")
     .attr("id","txt")
-    .attr("x", "45%")
-    .attr("y", "70%")
+    .attr("x", "43.5%")
+    .attr("y", "90%")
     .transition()
     .duration(5000)
         .tween("text", function(d) {
@@ -51,17 +51,24 @@ qSVG.selectAll("#txt")
         });
 
 function draw_round(){
-    var roundWidth = "50%";
-    //var qSVG = d3.select("#number").append("svg").attr("width",200).attr("height",200);
-    var svgContainer = d3.select("#number").append("svg")
-                        .attr("width", "100%")
-                        .attr("height", "100%");
+    //var roundRadius = 350;
+    var roundScale = d3.scale.linear()
+    .range([ 100,350])
+    .domain([end_val,start_val]);
 
-    var round = svgContainer.append("circle")
+    var qSVG2 = d3.select("#clearStyle").append("svg").attr("width","100%").attr("height",700)
+                ;
+
+    var round = qSVG2.append("circle")
                         .attr("id","round")
                         .attr("cx", "50%")
                         .attr("cy", "50%")
-                        .attr("r", start_val);
+                        .attr("r", roundScale(start_val));
+
+        round.transition()
+            .duration(5000)
+            .attr("r",roundScale(end_val))
+            .attr("cy","60%");
 
 
 

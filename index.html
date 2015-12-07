@@ -7,55 +7,8 @@
     	<link href="css/section.css" rel="stylesheet">
     	<link href="css/style.css" rel="stylesheet">
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-		<link rel="stylesheet" href="scatter.css" />
+		<link rel="stylesheet" href="css/scatter.css" />
     	<style>
-    	.container {
-  width: 890px;
-}
-
-#graphic {
-  padding-top: 60px;
-}
-
-
-#sections {
-  position: relative;
-  display: inline-block;
-  width: 250px;
-  top: 0px;
-  z-index: 90;
-  padding-bottom: 250px;
-}
-
-.step {
-  margin-bottom: 200px;
-  font-family: "TiemposTextWeb-Regular","Georgia";
-  font-size: 16px;
-  line-height: 23px;
-  color: #767678;
-}
-
-#sections .title {
-  font-family: Arial,Helvetica,"san-serif";
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 2px;
-  color: #262626;
-  line-height: 1.2em;
-}
-
-#extra-space {
-  height: 300px;
-}
-
-#vis {
-  display: inline-block;
-  position: fixed;
-  top: 60px;
-  z-index: 1;
-  margin-left: 0;
-  font-size: 10px;
-}
     	</style>
     </head>
 
@@ -69,7 +22,8 @@
 		<section id="first">
 			<div class="row">
 				<div class="col-md-12">
-          <div id = "number">
+          <div id = "clearStyle">
+            <div id = "number"></div>
           </div>
 				</div>
 			</div>	
@@ -99,58 +53,95 @@
 			</div>	
 		</section>
 		<section id = "fourth">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-12">
+              <h3>
+                Global Under Five Mortality Rate (Year2015)
+              </h3>
+              <p id="intro"><strong>Source: </strong><a href="http://data.worldbank.org/indicator/SH.DYN.MORT">WorldBank</a> </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div id="map"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6">
+                  <div id="line"></div>
+                </div>
+                <div class="col-md-6">
+                  <div id="line2"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div id="bar1"></div>
+                </div>
+                <div class="col-md-6">
+                  <div id="bar2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 		</section>
 		<section id = "fifth">
-			<div class="container">
-  <div id='graphic'>
-    <div id='sections'>
-      <section class="step">
-        <!-- case 0 -->
-        <div class="title">Women's role of children health</div>
-        The relationship between female education and the under five mortality rate, colored by region.
-      </section>
-      <section class="step">
-        <!-- case 1 -->
-        <div class="title">Afghanistan</div>
-        Afghanistan is the only country with the most serious problem of under 5 children death from South Asia.
-      </section>
-      <section class="step">
-        <!-- case 2 -->
-        <div class="title">Angola</div>
-          Angola is an outlier in the plot as it has the highest under five mortality rate although the female literacy rate is over 60 percent.
-      </section>
-      <section class="step">
-        <!-- case 3 -->
-        <div class="title">Top ten countries with lowest female youth literacy rate</div>
-        They also have relatively high under five mortality rate.
-      </section>
-      <section class="step">
-        <!-- case 4-->
-        <div class="title">Top ten countries with highest female youth literacy rate</div>
-        Most of them are from European and Central Asia, but the under five mortality rate varies a lot, why?
-      </section>
-      <section class="step">
-        <!-- case 5-->
-        <div class="title">How does female education related to children health?</div>
-        It contributes to :
-        </br> population growth
-        </br> GDP
-        </br> Medical care
-        </br> Family health
-        </br> Children education
-      </section>
-      <section class="step">
-        <!-- case 6-->
-        <div class="title">For example...</div>
-        Higher literacy rate contributes to lower female adolescent fertility rate.
-      </section>
-    </div>
-    <div id='vis'>
-    </div>
-    <div id="extra-space">
-    </div>
-  </div>
-</div>
+      <div class="row">
+        <div class="col-md-12">
+    			<div class="container">
+            <div id='graphic'>
+              <div id='sections'>
+                <section class="step">
+                <!-- case 0 -->
+                  <div class="title">Women's role of children health</div>
+                  The relationship between female education and the under five mortality rate, colored by region.
+                </section>
+                <section class="step">
+                <!-- case 1 -->
+                  <div class="title">Afghanistan</div>
+                  Afghanistan is the only country with the most serious problem of under 5 children death from South Asia.
+                </section>
+                <section class="step">
+                <!-- case 2 -->
+                  <div class="title">Angola</div>
+                  Angola is an outlier in the plot as it has the highest under five mortality rate although the female literacy rate is over 60 percent.
+                </section>
+                <section class="step">
+                <!-- case 3 -->
+                  <div class="title">Top ten countries with lowest female youth literacy rate</div>
+                  They also have relatively high under five mortality rate.
+                </section>
+                <section class="step">
+                <!-- case 4-->
+                  <div class="title">Top ten countries with highest female youth literacy rate</div>
+                  Most of them are from European and Central Asia, but the under five mortality rate varies a lot, why?
+                </section>
+                <section class="step">
+                <!-- case 5-->
+                  <div class="title">How does female education related to children health?</div>
+                  It contributes to :
+                  </br> population growth
+                  </br> GDP
+                  </br> Medical care
+                  </br> Family health
+                  </br> Children education
+                </section>
+                <section class="step">
+                <!-- case 6-->
+                  <div class="title">For example...</div>
+                  Higher literacy rate contributes to lower female adolescent fertility rate.
+                </section>
+              </div>
+              <div id='vis'></div>
+              <div id="extra-space"></div>
+            </div>
+          </div>
+        </div>
+      </div>
 		</section>
 
 
@@ -158,9 +149,17 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script src="http://d3js.org/queue.v1.min.js"></script>
-<script src="mfreeman_scroller.js"></script>
-<script src="scatter.js"></script>
-<script src="scroller.js"></script>
+<script src="//d3js.org/topojson.v1.min.js"></script>
+<script src="js/d3-legend.min.js"></script>
+<script src="js/getData.js"></script>
+<script src="js/map.js"></script>
+<script src="js/lineU5MR.js"></script>
+<script src="js/lineAdolescent.js"></script>
+<script src="js/barEducation.js"></script>
+<script src="js/barAttendant.js"></script>
+<script src="js/mfreeman_scroller.js"></script>
+<script src="js/scatter.js"></script>
+<script src="js/scroller.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="js/section.js"></script>
 <script src="js/count.js"></script>
