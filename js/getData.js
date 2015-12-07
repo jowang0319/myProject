@@ -29,8 +29,12 @@ function onClick(d){
 	dataFilter1 = dataBar1.filter(function(d){
 		return d.ISO3 === selectedCountry || d.country === "World"
 	});
-	console.log(dataFilter1);
+	dataFilter2 = dataBar2.filter(function(d){
+		return d.ISO3 === selectedCountry || d.country === "World"
+	});
+	console.log(dataFilter2);
 	update_bars(dataFilter1);
+	update_bars2(dataFilter2);
 };
 
 	
@@ -44,10 +48,19 @@ function display (error,barData,barData2){
 	} else{
 		//console.log(barData);
 		//console.log(barData2);
+
 		dataBar1 = barData;
 		dataBar2 = barData2;
+
+		dataFilter1 = dataBar1.filter(function(d){
+		return d.country === "China" || d.country === "World"
+	});
+		dataFilter2 = dataBar2.filter(function(d){
+		return d.country === "China" || d.country === "World"
+	});
+
 		draw_bar(dataFilter1);
-		draw_bar2(dataBar2);
+		draw_bar2(dataFilter2);
 	}
 }
 

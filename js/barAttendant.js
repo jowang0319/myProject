@@ -21,12 +21,12 @@ var widthScale = d3.scale.linear()
 var heightScale = d3.scale.ordinal()
 					.rangeRoundBands([ margin.top, height], 0.2);*/
 
-	var xAxisBar = d3.svg.axis()
+	var xAxis = d3.svg.axis()
 				.scale(widthScale)
 				.ticks(1)
 				.orient("bottom");
 
-	var yAxisBar = d3.svg.axis()
+	var yAxis = d3.svg.axis()
 				.scale(heightScale)
 				.orient("left")
 				.ticks(0)
@@ -41,12 +41,12 @@ var heightScale = d3.scale.ordinal()
 	barAttendant.append("g")
 		.attr("class", "x axis")
 		.attr("transform", "translate(" + marginBar.left + "," + heightBar + ")")
-		.call(xAxisBar);
+		.call(xAxis);
 
 	barAttendant.append("g")
 		.attr("class", "y axis")
 		.attr("transform", "translate(" + marginBar.left + ",0)")
-		.call(yAxisBar);
+		.call(yAxis);
 
 	// Label below x axis
 	barAttendant.append("text")

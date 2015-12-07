@@ -176,7 +176,7 @@ function getData2(data){
 
 
 function mouseoverFunc(d){
-	d3.selectAll("circle").attr("r",dotRadius);
+	d3.selectAll(".dots").attr("r",dotRadius);
 	d3.select(this).attr("r",9);
 	return tooltip
 		.style("display",null)
