@@ -8,7 +8,7 @@ function draw_map(){
 			.attr("id","svgMap");
 
 	var projection = d3.geo.mercator()
-		.scale(120)
+		.scale(125)
 		.translate([width1/2-160,height1/2+20]);
 
 	var path = d3.geo.path()
@@ -87,7 +87,7 @@ function draw_map(){
 
 	svgMap.append("g")
 		.attr("class","legendLinear")
-		.attr("transform","translate(0,20)");
+		.attr("transform","translate(0,500)");
 
 	var legendLinear = d3.legend.color()
 		.shapeWidth(30)

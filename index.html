@@ -52,36 +52,41 @@
 				</div>
 			</div>	
 		</section>
+
 		<section id = "fourth">
       <div class="row">
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-12">
-              <h3>
+              <h3 class = "fourHead">
                 Global Under Five Mortality Rate (Year2015)
               </h3>
-              <p id="intro"><strong>Source: </strong><a href="http://data.worldbank.org/indicator/SH.DYN.MORT">WorldBank</a> </p>
+              <p class = "fourHead" id="intro"><strong>Source: </strong><a href="http://data.worldbank.org/indicator/SH.DYN.MORT">WorldBank</a>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small> </p>
             </div>
           </div>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-7" id = "mapDiv">
               <div id="map"></div>
             </div>
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-6">
-                  <div id="line"></div>
+            <div class="col-md-5">
+              <div class="col-md-12">
+                  <h3 id="change"> Click on map and explore more </h3>
+                  <div id="legends"></div>
+                <div class="row">
+                  <div class="col-md-6" id="lineDiv1">
+                    <div id="line"></div>
+                  </div>
+                  <div class="col-md-6" id="lineDiv2">
+                    <div id="line2"></div>
+                  </div>
                 </div>
-                <div class="col-md-6">
-                  <div id="line2"></div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div id="bar1"></div>
-                </div>
-                <div class="col-md-6">
-                  <div id="bar2"></div>
+                <div class="row">
+                  <div class="col-md-6" id="barDiv1">
+                    <div id="bar1"></div>
+                  </div>
+                  <div class="col-md-6" id="barDiv2">
+                    <div id="bar2"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -89,7 +94,18 @@
         </div>
       </div>
 		</section>
-		<section id = "fifth">
+
+    <section id = "fifth">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="text">
+            Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
+          </p>
+        </div>
+      </div>  
+    </section>
+
+		<section id = "sixth">
       <div class="row">
         <div class="col-md-12">
     			<div class="container">
@@ -144,6 +160,8 @@
       </div>
 		</section>
 
+    
+
 
 	</body>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
@@ -153,10 +171,12 @@
 <script src="js/d3-legend.min.js"></script>
 <script src="js/getData.js"></script>
 <script src="js/map.js"></script>
+
 <script src="js/lineU5MR.js"></script>
 <script src="js/lineAdolescent.js"></script>
 <script src="js/barEducation.js"></script>
 <script src="js/barAttendant.js"></script>
+<script src="js/drawLegend.js"></script>
 <script src="js/mfreeman_scroller.js"></script>
 <script src="js/scatter.js"></script>
 <script src="js/scroller.js"></script>

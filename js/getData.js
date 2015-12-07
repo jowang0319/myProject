@@ -1,10 +1,13 @@
 var selectedCountry = null;
+var nameCountry = null;
 var dataFilter1 = [];
 var dataFilter2 = [];
+var dataLegend = ["Country Selected","World"];
 
 function onClick(d){
-	//console.log(d.id);
+	//console.log(d);
 	selectedCountry = d.id;
+	nameCountry = d.properties.name;
 	console.log(selectedCountry);
 	d3.selectAll("g.lines")
 		.each(function(d){
@@ -32,7 +35,10 @@ function onClick(d){
 	dataFilter2 = dataBar2.filter(function(d){
 		return d.ISO3 === selectedCountry || d.country === "World"
 	});
-	console.log(dataFilter2);
+	
+	d3.select("h3#change").html(nameCountry);
+	//console.log(dataLegend);
+	//console.log(dataFilter2);
 	update_bars(dataFilter1);
 	update_bars2(dataFilter2);
 };
@@ -61,6 +67,7 @@ function display (error,barData,barData2){
 
 		draw_bar(dataFilter1);
 		draw_bar2(dataFilter2);
+		drawLegend(dataLegend);
 	}
 }
 

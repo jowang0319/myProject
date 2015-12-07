@@ -21,15 +21,15 @@ var widthScale = d3.scale.linear()
 var heightScale = d3.scale.ordinal()
 					.rangeRoundBands([ margin.top, height], 0.2);*/
 
-	var xAxis = d3.svg.axis()
+	var xAxisBar = d3.svg.axis()
 				.scale(widthScale)
 				.ticks(1)
 				.orient("bottom");
 
-	var yAxis = d3.svg.axis()
+	var yAxisBar = d3.svg.axis()
 				.scale(heightScale)
 				.orient("left")
-				.ticks(0)
+				//.ticks(0)
 				.innerTickSize([0]);
 
 	/*var svg = d3.select("#bar2")
@@ -41,12 +41,12 @@ var heightScale = d3.scale.ordinal()
 	barAttendant.append("g")
 		.attr("class", "x axis")
 		.attr("transform", "translate(" + marginBar.left + "," + heightBar + ")")
-		.call(xAxis);
+		.call(xAxisBar);
 
 	barAttendant.append("g")
 		.attr("class", "y axis")
 		.attr("transform", "translate(" + marginBar.left + ",0)")
-		.call(yAxis);
+		.call(yAxisBar);
 
 	// Label below x axis
 	barAttendant.append("text")
@@ -74,7 +74,7 @@ var heightScale = d3.scale.ordinal()
 	// js map: will make a new array out of all the d.name fields
 	/*heightScale.domain(data1.map(function(d) { return d.country; } ));*/
 
-	update_bars(dataFilter2);
+	update_bars2(dataFilter2);
 
 }; // End of draw
 

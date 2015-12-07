@@ -28,7 +28,7 @@
 #fourth{
     background-color:#bbb;
     width:100%;
-    height:700px;
+    height:800px;
     border-bottom:2px solid #eee;
 	background-color: white;
 }
@@ -38,6 +38,14 @@
     height:700px;
     border-bottom:2px solid #eee;
 	background-color: grey;
+}
+
+#sixth{
+    background-color:#bbb;
+    width:100%;
+    height:700px;
+    border-bottom:2px solid #eee;
+    background-color: white;
 }
 
 p.text {
@@ -170,4 +178,35 @@ path.focused2{
                 opacity: 1.0;
             }
 
+#mapDiv{
+    background-color: grey;
+}
 
+svg#svgMap{
+    margin-left: 5%;
+    margin-top: 0%;
+}
+
+#lineDiv1{
+    background-color: blue;
+}
+#lineDiv2{
+    background-color: orange;
+}
+#barDiv1{
+    background-color: pink;
+}
+#barDiv2{
+    background-color: green;
+}
+
+.fourHead{
+    margin-left: auto;
+    margin-right: auto;
+    width:50%;
+    text-align: center;
+}
+
+.legendBar{
+    display: block;
+}
