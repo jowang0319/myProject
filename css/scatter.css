@@ -34,6 +34,7 @@ circle:hover{
 
 .tooltip{
   opacity:1;
+  background-color: rgba(255,255,255,0.5);
 
 }
 
@@ -76,11 +77,11 @@ circle:hover{
   height: 300px;
 }
 
-#vis {
+div#vis {
   display: inline-block;
   position: fixed;
   top: 60px;
-  z-index: 1;
+  z-index: 0;
   margin-left: 0;
   font-size: 10px;
 }

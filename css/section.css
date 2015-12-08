@@ -9,7 +9,7 @@
     width:100%;
     height:700px;
     border-bottom:2px solid #eee;
-	background-color: red;
+	background-color: white;
 }
 #second{
     background-color:#bbb;
@@ -155,6 +155,7 @@ path.focused2{
                 stroke:orange;
                 stroke-width:2px;
                 stroke-opacity:1;
+                z-index: 1000;
             }
 .axis text{
                 font-family: sans-serif;
@@ -295,4 +296,5 @@ P.appendTXT{
 div#legends{
     padding-top: 1%;
 }
+
 

@@ -57,6 +57,7 @@ var update = function(value) {
   var localdata = getData(data);
   colorFunction = colorsNone;
   var showScatter = "none";
+  var opacity = 0;
   //var region = null;
   switch(value) {
     case 1:
@@ -123,6 +124,7 @@ var update = function(value) {
       break;
     default:
       showScatter = "none";
+      opacity = 0;
       colorFunction = colorsNone;
       country = null;
       yValue = "Under Five Mortality Rate";

@@ -1,6 +1,5 @@
 var start_val = 72.5432,
     start_val2 = 1990,
-    duration = 2000,
     end_val = [31.8350]
     end_val2 = [2015];
 
@@ -63,7 +62,8 @@ function draw_round(){
                         .attr("id","round")
                         .attr("cx", "50%")
                         .attr("cy", "50%")
-                        .attr("r", roundScale(start_val));
+                        .attr("r", roundScale(start_val))
+                        .attr("fill","rgba(214, 39, 40,0.8)");
 
         round.transition()
             .duration(5000)

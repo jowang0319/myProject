@@ -82,7 +82,7 @@ svg.append("g")
 function draw_circles(data,showScatter){
 	//console.log(data);
 	console.log(showScatter);
-	svg.style("display",showScatter);
+	svg.style("display",showScatter).attr("opacity");
 
 	xScale.domain([
 		d3.min(data,function(d){

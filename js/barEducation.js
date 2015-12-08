@@ -129,29 +129,38 @@ function update_bars(data) {
 
     var labelBar = barEducation.selectAll("text")
             			.data(data)
-          				.enter()
-          				.append("text")
-            			.attr("class", "avg");
+
+    labelBar
+        .enter()
+        .append("text")
+        .attr("class", "avg");
 
     labelBar
     		.transition()
-    		.duration(200)
+    		.duration(1000)
     		.attr("x", function (d) {
         		console.log("in text: " + d.country);
-            		return (widthScale(d.youthLiteracyRate) - 25);
+            		return (widthScale(d.youthLiteracyRate) - 20);
         	})
          	.attr("y", function (d, i) {
               	return i * 30 + 39;
             })
         	.text(function (d) {
+        		if (d.youthLiteracyRate === 0){
+        			return "No data";
+        		}else
+        		if(d.youthLiteracyRate !== 0){
                 return Math.round(d.youthLiteracyRate*100)/100 + "%";
-            })
+            }})
          	.attr("font-family", "sans-serif")
          	.attr("font-size", "11px")
        		.attr("fill", "#000000");
 
     labelBar
     	.exit()
+    	.transition()
+    	.duration(1000)
+    	.attr("opacity",0)
     	.remove();
 
 	} // end update
