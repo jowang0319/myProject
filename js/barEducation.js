@@ -127,22 +127,29 @@ function update_bars(data) {
             }})
         .attr("opacity",0.5);
 
-    /*var labelOnBar = barEducation.selectAll("text")
-    	.data(data,function(d) {return d.country;})
-    	.enter()
-    	.append("text")
-		.attr("class", "labelOnBar")
-        .style("text-anchor", "middle");
-        //.attr("dy", "12")
+    var labelBar = barEducation.selectAll("text")
+            			.data(data)
+          				.enter()
+          				.append("text")
+            			.attr("class", "avg");
 
-    labelOnBar
-    	.transition()
-    	.duration(200)
-    	.attr("transform", function(d,i){
-            //console.log(d);
-            return "translate(" + widthScale(+d.youthLiteracyRate) + ", "+  i*30 + 25 +")";
-                    })
-        .text(function(d){return d.youthLiteracyRate});*/
+    labelBar
+    		.transition()
+    		.duration(200)
+    		.attr("x", function (d) {
+        		console.log("in text: " + d.country);
+            		return (widthScale(d.youthLiteracyRate) - 25);
+        	})
+         	.attr("y", function (d, i) {
+              	return i * 30 + 39;
+            })
+        	.text(function (d) {
+                return Math.round(d.youthLiteracyRate*100)/100 + "%";
+            })
+         	.attr("font-family", "sans-serif")
+         	.attr("font-size", "11px")
+       		.attr("fill", "#000000");
+
 
 	} // end update
 

@@ -7,7 +7,7 @@ function drawLegend(dataLegend){
 	legendBar
 		.enter()
 		.append("circle")
-		.attr("cx",function(d,i){return i*120+5})
+		.attr("cx",function(d,i){return i*120+6})
 		.attr("cy",6)
 		.attr("r",5)
 		.attr("class","legendBar")
