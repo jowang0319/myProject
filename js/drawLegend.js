@@ -13,7 +13,7 @@ function drawLegend(dataLegend){
 		.attr("class","legendBar")
 		.attr("fill",function(d){
 			if (d === "World"){
-				return "blue";
+				return "#333399";
 			} else{
 				return "orange"
 			}

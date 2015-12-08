@@ -8,22 +8,30 @@
     background-color:#bbb;
     width:100%;
     height:700px;
-    border-bottom:2px solid #eee;
-	background-color: white;
+    
+	background-color: black;
 }
 #second{
     background-color:#bbb;
     width:100%;
     height:700px;
-    border-bottom:2px solid #eee;
-	background-color:green;
+	background-color:black;
+    color:white;
+}
+div#pic1{
+    background-image:url("../img/save-the-children-australia1.jpg") ;
+    width:100%;
+    height:500px;
+    background-color: black;
+    background-size: cover;
+    background-position: center;
 }
 #third{
     background-color:#bbb;
     width:100%;
     height:700px;
     border-bottom:2px solid #eee;
-	background-color: blue;
+	
 }
 #fourth{
     background-color:#bbb;
@@ -37,7 +45,7 @@
     width:100%;
     height:700px;
     border-bottom:2px solid #eee;
-	background-color: grey;
+	background-color: white;
 }
 
 #sixth{
@@ -45,7 +53,34 @@
     width:100%;
     height:700px;
     border-bottom:2px solid #eee;
+    background-color: red;
+}
+
+#seventh{
+    background-color:#bbb;
+    width:100%;
+    height:800px;
+    border-bottom:2px solid #eee;
     background-color: white;
+}
+
+#eighth{
+    background-color:#bbb;
+    width:100%;
+    height:700px;
+    border-bottom:2px solid #eee;
+    background-color: green;
+}
+
+#nine{
+    background-color:#bbb;
+    width:100%;
+    height:700px;
+    background-color: white;
+}
+
+#ten{
+    background-color: grey;
 }
 
 p.text {
@@ -55,6 +90,7 @@ p.text {
     width: 50%;
     margin-top: 15%;
     margin-bottom:15%;
+    font-size: 15px;
 }
 
 h1.title{
@@ -146,7 +182,7 @@ path.unfocused{
             }
 path.focused1{
                 fill:none;
-                stroke:blue;
+                stroke:#333399;
                 stroke-width:2px;
                 stroke-opacity:1;
             }

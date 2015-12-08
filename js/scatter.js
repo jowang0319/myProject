@@ -4,7 +4,10 @@ var width = 700;
 var height = 600;
 var margin = {top:20,right:10,bottom:50,left:50};
 
+//var colors = d3.scale.category10();
+
 var colors = d3.scale.category10();
+				
 var colorsNone = function(d) {
 	if (d) {
 		return "grey";
@@ -119,7 +122,6 @@ function draw_circles(data,showScatter){
 			})
 		.attr("class","dots");
 				
-
 			
 	circles.transition().duration(1000).attr("cx", function(d) {
 				return xScale(+d.x);
@@ -193,7 +195,7 @@ function mousemoveFunc(d){
 			}
 
 function mouseoutFunc(d){
-	d3.selectAll("circle").attr("r",dotRadius);
+	d3.selectAll(".dots").attr("r",dotRadius);
 	//d3.selectAll("circle").classed("focused",false).classed("unfocused",false);
 				return tooltip
 					.style("display","none");

@@ -14,6 +14,8 @@ qSVG.selectAll("#txt2")
     .attr("id","txt2")
     .attr("x", "45%")
     .attr("y", "100%")
+    .attr("fill","white")
+    .attr("opacity",0.9)
     .transition()
     .duration(5000)
         .tween("text", function(d) {
@@ -37,6 +39,8 @@ qSVG.selectAll("#txt")
     .attr("id","txt")
     .attr("x", "43.5%")
     .attr("y", "90%")
+    .attr("fill","white")
+    .attr("opacity",0.9)
     .transition()
     .duration(5000)
         .tween("text", function(d) {
@@ -63,16 +67,21 @@ function draw_round(){
                         .attr("cx", "50%")
                         .attr("cy", "50%")
                         .attr("r", roundScale(start_val))
-                        .attr("fill","rgba(214, 39, 40,0.8)");
+                        .attr("fill","rgba(214, 39, 40,0.6)");
 
         round.transition()
             .duration(5000)
             .attr("r",roundScale(end_val))
-            .attr("cy","60%");
-
-
-
+            .attr("cy","65%");
 
 }
 
 draw_round();
+
+d3.select("#round").style("class","focused");
+
+
+
+
+
+

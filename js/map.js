@@ -14,7 +14,7 @@ function draw_map(){
 	var path = d3.geo.path()
 		.projection(projection);
 
-	var colors = d3.scale.linear().range(["#e5e5ff","#3333ff"])
+	var colors = d3.scale.linear().range(["#e5e5ff","#333399"])
 				.interpolate(d3.interpolateLab);
 
 	var countryById = d3.map();

@@ -82,6 +82,17 @@ function update_bars2(data){
 
 	console.log(data);
 
+	var dataNew = []
+
+	data.forEach(function(d){
+		if(d.skilledAttendant != "_"){
+			dataNew.push({
+				country : d.country,
+				skilledAttendant : +d.skilledAttendant
+			})
+		}
+	})
+
 	/*var data1 = []
 
 	data.forEach(function(d){
@@ -94,7 +105,7 @@ function update_bars2(data){
 	})*/
 
 	var rectsBar2 = barAttendant.selectAll("rect")
-					.data(data,function(d){return d.country;});
+					.data(dataNew,function(d){return d.country;});
 
 	rectsBar2
 		.enter()
@@ -123,6 +134,42 @@ function update_bars2(data){
 		.attr("width",0)
 		.attr("opacity",0)
 		.remove();
+
+	var labelBar2 = barAttendant.selectAll("text")
+            			.data(dataNew);
+
+    labelBar2
+        .enter()
+        .append("text")
+        .attr("class", "avg");
+
+    labelBar2
+    		.transition()
+    		.duration(1000)
+    		.attr("x", function (d) {
+        		console.log("in text: " + d.country);
+            		return (widthScale(+d.skilledAttendant) - 20);
+        	})
+         	.attr("y", function (d, i) {
+              	return i * 30 + 39;
+            })
+        	.text(function (d) {
+        		if (d.youthLiteracyRate === false){
+        			return "No data";
+        		}else
+        		if(d.youthLiteracyRate !== 0){
+                return Math.round(d.skilledAttendant*100)/100 + "%";
+            }})
+         	.attr("font-family", "sans-serif")
+         	.attr("font-size", "11px")
+       		.attr("fill", "#000000");
+
+    labelBar2
+    	.exit()
+    	.transition()
+    	.duration(1000)
+    	.attr("opacity",0)
+    	.remove();
 
 	/*rects.attr("x", marginBar.left)
 		.attr("y", function(d){
@@ -163,7 +210,7 @@ function update_bars2(data){
     d3.selectAll("rect")
         .attr('fill',function(d){
             if (d.country === "World"){
-               	return "blue";
+               	return "#333399";
        		} 
             else {
                 return "orange";
