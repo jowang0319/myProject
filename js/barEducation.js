@@ -1,17 +1,17 @@
-var fullwidth = 300,
-	fullheight = 180;
+var fullwidth = 280,
+	fullheight = 100;
 
 // these are the margins around the graph. Axes labels go in margins.
-var marginBar = {top: 20, right: 25, bottom: 20, left: 20};
+var marginBar = {top:10, right:20, bottom:40, left:10};
 
 var widthBar = fullwidth - marginBar.left - marginBar.right,
    	heightBar = fullheight - marginBar.top - marginBar.bottom;
 
 var widthScale = d3.scale.linear()
-					.range([0, widthBar]).domain([0,100]);
+					.range([0, widthBar-marginBar.left*2 -marginBar.right]).domain([0,100]);
 
 var heightScale = d3.scale.ordinal()
-					.rangeRoundBands([ marginBar.top, heightBar], 0.2);
+					.rangeRoundBands([ marginBar.top, heightBar - marginBar.bottom +3], 0.2);
 
 
 var barEducation = d3.select("#bar1")
@@ -33,26 +33,27 @@ console.log(dataFilter1);
 	var yAxisBar = d3.svg.axis()
 				.scale(heightScale)
 				.orient("left")
-				.innerTickSize([0]);
+				.innerTickSize([0])
+				.outerTickSize([0]);
 
-	barEducation.append("g")
+	/*barEducation.append("g")
 		.attr("class", "x axis")
 		.attr("transform", "translate(" + marginBar.left + "," + heightBar + ")")
-		.call(xAxisBar);
+		.call(xAxisBar);*/
 
-	barEducation.append("g")
+	/*barEducation.append("g")
 		.attr("class", "y axis")
 		.attr("transform", "translate(" + marginBar.left + ",0)")
-		.call(yAxisBar);
+		.call(yAxisBar);*/
 
 	// Label below x axis
-	barEducation.append("text")
+	/*barEducation.append("text")
 		.attr("class", "xlabel")
         .attr("transform", "translate(" + (marginBar.left + widthBar / 2) + " ," +
         				(heightBar + marginBar.bottom) + ")")
         .style("text-anchor", "middle")
         .attr("dy", "12")
-        .text("Percent");
+        .text("Percent");*/
 
     var rectsBar = barEducation.selectAll("rect")
 					.data(dataFilter1, function(d) {return d.country;});
@@ -89,10 +90,10 @@ function update_bars(data) {
 		.append("rect")
 		.attr("x", marginBar.left)
 		.attr("y", function(d,i){
-			return i*60 + 25
+			return i*30 + 25
 		})
 		.attr("width",0)
-		.attr("height", 40)
+		.attr("height", 20)
 		.attr("id",function(d){
 			return d.country;
 		});
@@ -125,6 +126,23 @@ function update_bars(data) {
                 return "orange";
             }})
         .attr("opacity",0.5);
+
+    /*var labelOnBar = barEducation.selectAll("text")
+    	.data(data,function(d) {return d.country;})
+    	.enter()
+    	.append("text")
+		.attr("class", "labelOnBar")
+        .style("text-anchor", "middle");
+        //.attr("dy", "12")
+
+    labelOnBar
+    	.transition()
+    	.duration(200)
+    	.attr("transform", function(d,i){
+            //console.log(d);
+            return "translate(" + widthScale(+d.youthLiteracyRate) + ", "+  i*30 + 25 +")";
+                    })
+        .text(function(d){return d.youthLiteracyRate});*/
 
 	} // end update
 

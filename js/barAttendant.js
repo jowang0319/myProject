@@ -29,8 +29,8 @@ var heightScale = d3.scale.ordinal()
 	var yAxisBar = d3.svg.axis()
 				.scale(heightScale)
 				.orient("left")
-				//.ticks(0)
-				.innerTickSize([0]);
+				.innerTickSize([0])
+				.outerTickSize([0]);
 
 	/*var svg = d3.select("#bar2")
 			.append("svg")
@@ -38,7 +38,7 @@ var heightScale = d3.scale.ordinal()
 			.attr("height", fullheight);*/
 
 
-	barAttendant.append("g")
+	/*barAttendant.append("g")
 		.attr("class", "x axis")
 		.attr("transform", "translate(" + marginBar.left + "," + heightBar + ")")
 		.call(xAxisBar);
@@ -46,16 +46,16 @@ var heightScale = d3.scale.ordinal()
 	barAttendant.append("g")
 		.attr("class", "y axis")
 		.attr("transform", "translate(" + marginBar.left + ",0)")
-		.call(yAxisBar);
+		.call(yAxisBar);*/
 
 	// Label below x axis
-	barAttendant.append("text")
+	/*barAttendant.append("text")
 		.attr("class", "xlabel")
         .attr("transform", "translate(" + (marginBar.left + widthBar / 2) + " ," +
         				(heightBar + marginBar.bottom) + ")")
         .style("text-anchor", "middle")
         .attr("dy", "12")
-        .text("Percent");
+        .text("Percent");*/
 
     var rectsBar2 = barAttendant.selectAll("rect")
 					.data(dataFilter2)
@@ -101,10 +101,10 @@ function update_bars2(data){
 		.append("rect")
 		.attr("x", marginBar.left)
 		.attr("y", function(d,i){
-			return i*60 + 25
+			return i*30 + 25
 		})
 		.attr("width",0)
-		.attr("height", 40)
+		.attr("height", 20)
 		.attr("id",function(d){
 			return d.country;
 		});

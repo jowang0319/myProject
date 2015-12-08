@@ -1,31 +1,32 @@
 function draw_lineAdolescent(){
 	
-
-var widthLine = 300;
+var widthLine = 280;
 var heightLine = 280;
 
-var marginLine = {top:20, right:0, bottom:40, left:45};
+var marginLine = {top:20, right:20, bottom:40, left:10};
 
 var dateFormat = d3.time.format("%Y");
 
 var xScaleLine = d3.time.scale()
-	.range([marginLine.left,widthLine-marginLine.left - marginLine.right]);
+	.range([marginLine.left,widthLine-marginLine.left*2 - marginLine.right]);
 var yScaleLine = d3.scale.linear()
 	.range([marginLine.top, heightLine- marginLine.bottom]);
 
 var xAxisLine2 = d3.svg.axis()
 	.scale(xScaleLine)
 	.orient("bottom")
-	.ticks(2)
+	.ticks(0)
 	.tickFormat(function(d){
 		return dateFormat(d);
 	})
 	.innerTickSize([0]);
+
 var yAxisLine2 = d3.svg.axis()
 	.scale(yScaleLine)
-	.orient("left")
-	.ticks(2)
-	.innerTickSize([0]);
+	.orient("right")
+	.tickSize(widthLine - marginLine.right - marginLine.left*3 )
+	.ticks(3)
+	.outerTickSize([0]);
 
 var line = d3.svg.line()
 	.x(function(d){
@@ -113,13 +114,27 @@ svgLine.append("g")
 	.call(yAxisLine2);
 
 svgLine.append("text")      
-    .attr("x", widthLine/2 )
-    .attr("y", heightLine - 10 )
+    .attr("x", widthLine/2 - 15 )
+    .attr("y", heightLine - 20 )
     .style("text-anchor", "middle")
     .attr("class","lineLabel")
     .text("Year");
 
-svgLine.append("text")  
+svgLine.append("text")      
+    .attr("x", marginLine.left + 10 )
+    .attr("y", heightLine - 20 )
+    .style("text-anchor", "middle")
+    .attr("class","lineLabel")
+    .text("1960");
+
+svgLine.append("text")      
+    .attr("x", widthLine - marginLine.right - marginLine.left*3 )
+    .attr("y", heightLine - 20 )
+    .style("text-anchor", "middle")
+    .attr("class","lineLabel")
+    .text("2014");
+
+/*svgLine.append("text")  
     .attr("y", 0 )    
     .attr("x", - heightLine/2)
     .attr("class","lineLabel")
@@ -128,7 +143,7 @@ svgLine.append("text")
     .attr("transform", "rotate(-90)")
     .attr("dy", "1em");
 
-/*d3.selectAll("g.lines")
+d3.selectAll("g.lines")
 	.attr("stroke", function(d) { 
 		if (d.country === "World"){
 			return "blue";
@@ -150,7 +165,7 @@ svgLine.append("text")
 
 d3.selectAll("path.line").classed("unfocused",true);
 
-groupsLine.append("text")
+/*groupsLine.append("text")
     .attr("transform", function(d){
         if (d.rates[53]) {
             //console.log(d);

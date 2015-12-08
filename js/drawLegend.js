@@ -8,7 +8,7 @@ function drawLegend(dataLegend){
 		.enter()
 		.append("circle")
 		.attr("cx",function(d,i){return i*120+5})
-		.attr("cy",5)
+		.attr("cy",6)
 		.attr("r",5)
 		.attr("class","legendBar")
 		.attr("fill",function(d){
@@ -27,12 +27,12 @@ function drawLegend(dataLegend){
 
 	legendText
 		.attr("x", function(d,i){return i*120 + 15})
-		.attr("y",8)
+		.attr("y",10)
 		.text(function(d){
 			return d;
 		})
 		.attr("font-family", "sans-serif")
-        .attr("font-size", "11px")
+        .attr("font-size", "12px")
        	.attr("fill", "#000000");
 
     legendText
