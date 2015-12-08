@@ -150,6 +150,9 @@ function update_bars(data) {
          	.attr("font-size", "11px")
        		.attr("fill", "#000000");
 
+    labelBar
+    	.exit()
+    	.remove();
 
 	} // end update
 
