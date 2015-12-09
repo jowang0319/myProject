@@ -60,21 +60,21 @@ var update = function(value) {
   var country = null;
   var localdata = getData(data);
   colorFunction = colorsNone;
-  var showScatter = "none";
+  //var showScatter = "none";
   var opacity = 0;
   var show_vis = true;
   //var region = null;
   switch(value) {
     case 0:
       show_vis = false;
-      showScatter = "inline-block";
+      //showScatter = "inline-block";
       console.log("in case",value,country);
       localdata = getData(data);
       country = null;
       yValue = "Under Five Mortality Rate";
       colorFunction = colorsNone;
     case 1:
-      showScatter = "inline-block";
+      //showScatter = "inline-block";
       console.log("in case",value,country);
       //console.log(colorFunction);
       localdata = getData(data);
@@ -82,7 +82,7 @@ var update = function(value) {
       yValue = "Under Five Mortality Rate";
       colorFunction = colorsNone;
     case 2:
-      showScatter = "inline-block";
+      //showScatter = "inline-block";
       console.log("in case",value,country);
       localdata = getData(data);
       country = "Afghanistan";
@@ -91,7 +91,7 @@ var update = function(value) {
       //region: null;
       break;
     case 3:
-      showScatter = "inline-block";
+      //showScatter = "inline-block";
       console.log("in case",country);
       //yScale = d3.scale.sqrt().range([margin.top, height - margin.bottom]);
       localdata = getData(data);
@@ -101,7 +101,7 @@ var update = function(value) {
       //region = "Sub-Saharan Africa"
       break;
     case 4:
-      showScatter = "inline-block";
+      //showScatter = "inline-block";
       console.log("in case",value,country,"10 lowest");
       country = null;
       localdata = getData(data).sort(function(a,b){
@@ -113,7 +113,7 @@ var update = function(value) {
       //region: null;
       break;
     case 5:
-      showScatter = "inline-block";
+      //showScatter = "inline-block";
       console.log("in case",value,country,"10 hightest");
       country = null;
       localdata = getData(data).sort(function(a,b){
@@ -125,7 +125,7 @@ var update = function(value) {
       //region: null;
       break;
     case 6:
-      showScatter = "inline-block";
+      //showScatter = "inline-block";
       console.log("in case", value);
       localdata = getData(data);
       console.log(localdata);
@@ -135,7 +135,7 @@ var update = function(value) {
       //region: null;
       break;
     case 7:
-      showScatter = "inline-block";
+      //showScatter = "inline-block";
       country = null;
       console.log("in case ", value);
       localdata = getData2(data);
@@ -144,9 +144,18 @@ var update = function(value) {
       colorFunction = colors;
       //region: null;
       break;
+    case 8:
+      country = null;
+      console.log("in case ", value);
+      localdata = getData2(data);
+      console.log(localdata);
+      yValue = "Adolescent Fertility Rate";
+      colorFunction = colors;
+      show_vis = false;
+      break;
     default:
-      showScatter = "none";
-      opacity = 0;
+      //showScatter = "none";
+      //opacity = 0;
       colorFunction = colorsNone;
       country = null;
       show_vis = true;
@@ -163,7 +172,7 @@ var update = function(value) {
   } else {
     vis.style("display", "none");
   }
-  draw_circles(localdata,showScatter); // we can update the data if we want in the cases.
+  draw_circles(localdata/*,showScatter*/); // we can update the data if we want in the cases.
   if (value > 1) {
    focus_country(country); // this applies a highlight on a country.
  } else {
@@ -196,10 +205,10 @@ function display(error, mydata) {
     var oldScroll = 4500;
     $(window).scroll(function (event) {
       var scroll = $(window).scrollTop();
-      //console.log("scroll", scroll);
-      if (scroll >= 6500 && scroll > oldScroll) {
+      console.log("scroll", scroll);
+      if (scroll >= 7900 && scroll > oldScroll) {
           vis.style("display", "none");
-       } else if (scroll >= 6500 && scroll < oldScroll) {
+       } else if (scroll >= 7900 && scroll < oldScroll-1) {
         vis.style("display", "inline-block"); // going backwards, turn it on.
        }
       oldScroll = scroll;

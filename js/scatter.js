@@ -82,10 +82,10 @@ svg.append("g")
     .attr("class", "label")
     .text(label);*/
 
-function draw_circles(data,showScatter){
+function draw_circles(data){
 	//console.log(data);
-	console.log(showScatter);
-	svg.style("display",showScatter).attr("opacity");
+	//console.log(showScatter);
+	//svg.style("display",showScatter);
 
 	xScale.domain([
 		d3.min(data,function(d){

@@ -32,6 +32,10 @@ circle:hover{
   opacity: 0.3;
 }
 
+rect:hover{
+  opacity:0.3;
+}
+
 .tooltip{
   opacity:1;
   background-color: rgba(255,255,255,0.5);
@@ -50,7 +54,7 @@ circle:hover{
 #sections {
   position: relative;
   display: inline-block;
-  width: 250px;
+  width: 280px;
   top: 0px;
   z-index: 90;
   padding-bottom: 250px;
