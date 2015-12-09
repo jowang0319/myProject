@@ -58,7 +58,7 @@ var heightScale = d3.scale.ordinal()
         .text("Percent");*/
 
     var rectsBar2 = barAttendant.selectAll("rect")
-					.data(dataFilter2)
+					.data(dataFilter2,function(d){return d.country;});
 
 	/*data1.sort(function(a, b) {
 		return d3.descending(+a.skilledAttendant, +b.skilledAttendant);
@@ -79,6 +79,8 @@ var heightScale = d3.scale.ordinal()
 }; // End of draw
 
 function update_bars2(data){
+
+	heightScale.domain(data.map(function(d) { return d.country; } ));
 
 	console.log(data);
 
@@ -111,9 +113,6 @@ function update_bars2(data){
 		.enter()
 		.append("rect")
 		.attr("x", marginBar.left)
-		.attr("y", function(d,i){
-			return i*30 + 25
-		})
 		.attr("width",0)
 		.attr("height", 20)
 		.attr("id",function(d){
@@ -123,6 +122,10 @@ function update_bars2(data){
 	rectsBar2
 		.transition()
 		.duration(1000)
+		.attr("y", function(d,i){
+      		//return i*30 + 25
+      		return heightScale(d.country);
+    	})
 		.attr("width", function(d) {
 			return widthScale(+d.skilledAttendant);
 		});
@@ -136,7 +139,7 @@ function update_bars2(data){
 		.remove();
 
 	var labelBar2 = barAttendant.selectAll("text")
-            			.data(dataNew);
+            			.data(dataNew,function(d){return d.country});
 
     labelBar2
         .enter()
@@ -148,17 +151,17 @@ function update_bars2(data){
     		.duration(1000)
     		.attr("x", function (d) {
         		console.log("in text: " + d.country);
-            		return (widthScale(+d.skilledAttendant) - 20);
+            		return marginBar.left + 5;
         	})
-         	.attr("y", function (d, i) {
-              	return i * 30 + 39;
-            })
+         	.attr("y", function(d, i) {
+          		return heightScale(d.country) + 13;  // location of label
+        	})
         	.text(function (d) {
-        		if (d.youthLiteracyRate === false){
+        		if (d.skilledAttendant === 0){
         			return "No data";
         		}else
-        		if(d.youthLiteracyRate !== 0){
-                return Math.round(d.skilledAttendant*100)/100 + "%";
+        		if(d.skilledAttendant!== 0){
+                return d.country + ": " + Math.round(d.skilledAttendant*100)/100 + "%";
             }})
          	.attr("font-family", "sans-serif")
          	.attr("font-size", "11px")

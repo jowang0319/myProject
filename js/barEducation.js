@@ -2,7 +2,7 @@ var fullwidth = 280,
 	fullheight = 100;
 
 // these are the margins around the graph. Axes labels go in margins.
-var marginBar = {top:10, right:20, bottom:40, left:10};
+var marginBar = {top:30, right:20, bottom:40, left:10};
 
 var widthBar = fullwidth - marginBar.left - marginBar.right,
    	heightBar = fullheight - marginBar.top - marginBar.bottom;
@@ -11,8 +11,7 @@ var widthScale = d3.scale.linear()
 					.range([0, widthBar-marginBar.left*2 -marginBar.right]).domain([0,100]);
 
 var heightScale = d3.scale.ordinal()
-					.rangeRoundBands([ marginBar.top, heightBar - marginBar.bottom +3], 0.2);
-
+					.rangeRoundBands([marginBar.top, fullheight]);
 
 var barEducation = d3.select("#bar1")
 			.append("svg")
@@ -89,18 +88,27 @@ function update_bars(data) {
 		.enter()
 		.append("rect")
 		.attr("x", marginBar.left)
-		.attr("y", function(d,i){
-			return i*30 + 25
-		})
 		.attr("width",0)
 		.attr("height", 20)
 		.attr("id",function(d){
 			return d.country;
 		});
 
+    rectsBar
+    .exit()
+    .transition()
+    .duration(1000)
+    .attr("width",0)
+    .attr("opacity",0)
+    .remove();
+
 	rectsBar
 		.transition()
 		.duration(1000)
+    .attr("y", function(d,i){
+      //return i*30 + 25
+      return heightScale(d.country);
+    })
 		.attr("width", function(d) {
 			return widthScale(+d.youthLiteracyRate);
 		});
@@ -109,13 +117,6 @@ function update_bars(data) {
 			return d.country + "youth literacy rate " + d.youthLiteracyRate + " per 100 person";
 		});*/
 
-	rectsBar
-		.exit()
-		.transition()
-		.duration(1000)
-		.attr("width",0)
-		.attr("opacity",0)
-		.remove();
 
 	d3.selectAll("rect")
         .attr('fill',function(d){
@@ -128,7 +129,7 @@ function update_bars(data) {
         .attr("opacity",0.5);
 
     var labelBar = barEducation.selectAll("text")
-            			.data(data)
+            			.data(data, function(d) {return d.country;});
 
     labelBar
         .enter()
@@ -136,32 +137,36 @@ function update_bars(data) {
         .attr("class", "avg");
 
     labelBar
+      .exit()
+      .transition()
+      .duration(1000)
+      .attr("opacity",0)
+      .remove();
+
+    labelBar
     		.transition()
     		.duration(1000)
     		.attr("x", function (d) {
         		console.log("in text: " + d.country);
-            		return (widthScale(d.youthLiteracyRate) - 20);
+            		return marginBar.left + 5;
         	})
-         	.attr("y", function (d, i) {
-              	return i * 30 + 39;
-            })
+         //	.attr("y", function (d, i) {
+          //    	return i * 30 + 39;
+          //  })
+        .attr("y", function(d, i) {
+          return heightScale(d.country) + 13;  // location of label
+        })
         	.text(function (d) {
         		if (d.youthLiteracyRate === 0){
         			return "No data";
         		}else
         		if(d.youthLiteracyRate !== 0){
-                return Math.round(d.youthLiteracyRate*100)/100 + "%";
+                return d.country + ": " +Math.round(d.youthLiteracyRate*100)/100 + "%";
             }})
          	.attr("font-family", "sans-serif")
          	.attr("font-size", "11px")
        		.attr("fill", "#000000");
 
-    labelBar
-    	.exit()
-    	.transition()
-    	.duration(1000)
-    	.attr("opacity",0)
-    	.remove();
 
 	} // end update
 

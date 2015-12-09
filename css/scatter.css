@@ -82,7 +82,7 @@ rect:hover{
 }
 
 div#vis {
-  display: inline-block;
+  display: none;
   position: fixed;
   top: 60px;
   z-index: 0;

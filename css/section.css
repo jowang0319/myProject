@@ -2,7 +2,50 @@
 #arrow{
     position:fixed;
     z-index: 10000;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    bottom: 0.5%;
 }
+
+#arrow2{
+    position:fixed;
+    z-index: 10000;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+}
+
+#arrow-up {
+    width: 5%; 
+    height: 0; 
+    margin-top: 0.5%;
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 25px solid rgba(84,84,84,0.6);
+}
+#arrow-up:hover{
+    opacity:0.6;
+    cursor:pointer;
+
+}
+#arrow-down:hover{
+    opacity:0.6;
+    cursor:pointer;
+}
+#arrow-down {
+    width: 5%; 
+    height: 0; 
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    
+    border-top: 25px solid rgba(51, 51, 153, 0.6);
+}
+
 
 #first{
     background-color:#bbb;
@@ -109,10 +152,10 @@ div#credit{
 div#creditSub{
     width:100%;
     height:800px;
-    background-color: grey;
-    margin-top:35%;
+    background-color: rgba(83,83,83,0.9);
+    margin-top:30%;
     opacity:1;
-    padding-top: 2%;
+    padding-top: 1.8%;
 }
 
 
@@ -146,7 +189,7 @@ p.textCredit{
     margin-right: auto;
     width: 49%;
     margin-top: 5%;
-    margin-bottom:15%;
+    margin-bottom:12%;
     font-size: 20px;
     color:white;
     opacity:0.8;

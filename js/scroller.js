@@ -208,7 +208,7 @@ function display(error, mydata) {
       console.log("scroll", scroll);
       if (scroll >= 7900 && scroll > oldScroll) {
           vis.style("display", "none");
-       } else if (scroll >= 7900 && scroll < oldScroll-1) {
+       } else if (scroll >= 7900 && scroll < 8100 && scroll < oldScroll-1 ) {
         vis.style("display", "inline-block"); // going backwards, turn it on.
        }
       oldScroll = scroll;
