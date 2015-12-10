@@ -38,7 +38,7 @@ function onClick(d){
 	
 	d3.select("h3#change").html(nameCountry);
 	//console.log(dataLegend);
-	//console.log(dataFilter2);
+	console.log(dataFilter1);
 	update_bars(dataFilter1);
 	update_bars2(dataFilter2);
 };

@@ -205,7 +205,7 @@ function display(error, mydata) {
     var oldScroll = 4500;
     $(window).scroll(function (event) {
       var scroll = $(window).scrollTop();
-      console.log("scroll", scroll);
+      //console.log("scroll", scroll);
       if (scroll >= 7900 && scroll > oldScroll) {
           vis.style("display", "none");
        } else if (scroll >= 7900 && scroll < 8100 && scroll < oldScroll-1 ) {
