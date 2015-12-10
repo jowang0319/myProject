@@ -307,7 +307,7 @@ svg path:hover {
 }
 
 .label{
-    stroke:lightgrey;
+    /*stroke:lightgrey;*/
 }
 
 .myTooltipMap {
