@@ -102,6 +102,16 @@ var update = function(value) {
       break;
     case 4:
       //showScatter = "inline-block";
+      console.log("in case",value,country);
+      country = null;
+      localdata = getData(data);
+      console.log(localdata);
+      yValue = "Under Five Mortality Rate";
+      colorFunction = colors;
+      //region: null;
+      break;
+    case 5:
+      //showScatter = "inline-block";
       console.log("in case",value,country,"10 lowest");
       country = null;
       localdata = getData(data).sort(function(a,b){
@@ -112,7 +122,7 @@ var update = function(value) {
       colorFunction = colors;
       //region: null;
       break;
-    case 5:
+    case 6:
       //showScatter = "inline-block";
       console.log("in case",value,country,"10 hightest");
       country = null;
@@ -124,7 +134,7 @@ var update = function(value) {
       colorFunction = colors;
       //region: null;
       break;
-    case 6:
+    case 7:
       //showScatter = "inline-block";
       console.log("in case", value);
       localdata = getData(data);
@@ -134,7 +144,7 @@ var update = function(value) {
       colorFunction = colors;
       //region: null;
       break;
-    case 7:
+    case 8:
       //showScatter = "inline-block";
       country = null;
       console.log("in case ", value);
@@ -144,7 +154,7 @@ var update = function(value) {
       colorFunction = colors;
       //region: null;
       break;
-    case 8:
+    case 9:
       country = null;
       console.log("in case ", value);
       localdata = getData2(data);

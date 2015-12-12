@@ -203,6 +203,16 @@ p.intro{
     font-size: 16px;
     opacity: 0.8;
 }
+p#U5MR{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    color:black;
+}
+div#U5MRTXT{
+    background-color: grey;
+}
 span.capital{
     text-transform: uppercase;
 }
