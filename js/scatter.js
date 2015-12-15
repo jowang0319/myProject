@@ -170,6 +170,7 @@ function getData2(data){
 function mouseoverFunc(d){
 	d3.selectAll(".dots").attr("r",dotRadius);
 	d3.select(this).attr("r",9);
+	console.log(d);
 	return tooltip
 		.style("display",null)
 		.html("<p>Country: " + d.country +
