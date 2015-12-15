@@ -1,10 +1,7 @@
 
-//normal settings
 var width = 700;
 var height = 600;
 var margin = {top:20,right:10,bottom:50,left:50};
-
-//var colors = d3.scale.category10();
 
 var colors = d3.scale.category10();
 				
@@ -17,7 +14,7 @@ var colorsNone = function(d) {
 	}
 };
 
-var colorFunction = colorsNone; // starting state
+var colorFunction = colorsNone; 
 
 var dotRadius = 6; 
 
@@ -110,10 +107,6 @@ function draw_circles(data){
 
 	circles
 		.enter()
-		/*.append("g")
-		.attr("id",function(d){
-			return d.Region;
-		})*/
 		.append("circle")
 		.attr("r", 0)
 		.attr("opacity",0)
@@ -152,16 +145,14 @@ function draw_circles(data){
       	.on("mousemove", mousemoveFunc) 
       	.on("mouseout", mouseoutFunc);
 
-}//end of draw circles
+};
 
 function getData(data){
   data.forEach(function(d){
     d.x = +d.youthLiteracyRate;
     d.y = +d.under5Mortality;
     d.yLabel = "Under 5 Mortality Rate"
-    //d.region = d.Region.replace(/\s/g, '_')
   })
-  //console.log(data);
   return data;
 }
 
@@ -171,7 +162,6 @@ function getData2(data){
     d.y = +d.adolescentFertilityRate;
     d.yLabel = "Adolescent Fertility Rate"
   })
-  //console.log(data);
   return data;
 }
 
@@ -180,7 +170,6 @@ function getData2(data){
 function mouseoverFunc(d){
 	d3.selectAll(".dots").attr("r",dotRadius);
 	d3.select(this).attr("r",9);
-	//console.log(d.Region)
 	return tooltip
 		.style("display",null)
 		.html("<p>Country: " + d.country +
@@ -197,7 +186,6 @@ function mousemoveFunc(d){
 
 function mouseoutFunc(d){
 	d3.selectAll(".dots").attr("r",dotRadius);
-	//d3.selectAll("circle").classed("focused",false).classed("unfocused",false);
 				return tooltip
 					.style("display","none");
 

@@ -1,7 +1,6 @@
 var fullwidth = 280,
 	fullheight = 100;
 
-// these are the margins around the graph. Axes labels go in margins.
 var marginBar = {top:30, right:20, bottom:40, left:10};
 
 var widthBar = fullwidth - marginBar.left - marginBar.right,
@@ -19,8 +18,6 @@ var barEducation = d3.select("#bar1")
 			.attr("height", fullheight);
 
 function draw_bar(dataFilter1){
-// this is the size of the svg container -- the white part
-
 
 console.log(dataFilter1);
 
@@ -35,40 +32,8 @@ console.log(dataFilter1);
 				.innerTickSize([0])
 				.outerTickSize([0]);
 
-	/*barEducation.append("g")
-		.attr("class", "x axis")
-		.attr("transform", "translate(" + marginBar.left + "," + heightBar + ")")
-		.call(xAxisBar);*/
-
-	/*barEducation.append("g")
-		.attr("class", "y axis")
-		.attr("transform", "translate(" + marginBar.left + ",0)")
-		.call(yAxisBar);*/
-
-	// Label below x axis
-	/*barEducation.append("text")
-		.attr("class", "xlabel")
-        .attr("transform", "translate(" + (marginBar.left + widthBar / 2) + " ," +
-        				(heightBar + marginBar.bottom) + ")")
-        .style("text-anchor", "middle")
-        .attr("dy", "12")
-        .text("Percent");*/
-
     var rectsBar = barEducation.selectAll("rect")
 					.data(dataFilter1, function(d) {return d.country;});
-
-	/*rects
-		.enter()
-		.append("rect")
-		.attr("x", marginBar.left)
-		.attr("y", function(d,i){
-			return i*40
-		})
-		.attr("width",0)
-		.attr("height",20)
-		.attr("id",function(d){
-			return d.country;
-		});*/
 
      update_bars(dataFilter1);
 
@@ -76,8 +41,6 @@ console.log(dataFilter1);
 
 
 function update_bars(data) {
-
-	//console.log(data);
 
 	heightScale.domain(data.map(function(d) { return d.country; } ));
 
@@ -112,11 +75,6 @@ function update_bars(data) {
 		.attr("width", function(d) {
 			return widthScale(+d.youthLiteracyRate);
 		});
-		/*.append("title")  
-		.text(function(d) {
-			return d.country + "youth literacy rate " + d.youthLiteracyRate + " per 100 person";
-		});*/
-
 
 	d3.selectAll("rect")
         .attr('fill',function(d){
@@ -150,9 +108,6 @@ function update_bars(data) {
         		console.log("in text: " + d.country);
             		return marginBar.left + 5;
         	})
-         //	.attr("y", function (d, i) {
-          //    	return i * 30 + 39;
-          //  })
         .attr("y", function(d, i) {
           return heightScale(d.country) + 13;  // location of label
         })
@@ -169,30 +124,4 @@ function update_bars(data) {
 
 
 	} // end update
-
-	/*var labelBar = svg.selectAll("text")
-            			.data(data)
-          				.enter()
-          				.append("text")
-            			.attr("class", "avg");
-
-    labelBar.attr("x", function (d) {
-        		console.log("in text: " + d.country);
-            		return (widthScale(d.youthLiteracyRate) + 10);
-        	})
-         	.attr("y", function (d, i) {
-              	return i * 40 + 14;
-            })
-        	.text(function (d) {
-                return d.country + " : " + d.youthLiteracyRate + "%";
-            })
-         	.attr("font-family", "sans-serif")
-         	.attr("font-size", "11px")
-       		.attr("fill", "#000000"); */
-
-
-
-        	// You could also use tick formatting to get a % sign on each axis tick
-
-
 

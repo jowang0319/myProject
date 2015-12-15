@@ -1,6 +1,4 @@
 
-function draw_lineU5MR(){
-
 var widthLine = 280;
 var heightLine = 280;
 
@@ -12,6 +10,8 @@ var xScaleLine = d3.time.scale()
 	.range([marginLine.left,widthLine-marginLine.left*2 - marginLine.right]);
 var yScaleLine = d3.scale.linear()
 	.range([marginLine.top, heightLine- marginLine.bottom]);
+
+function draw_lineU5MR(){
 
 var xAxisLine = d3.svg.axis()
 	.scale(xScaleLine)
@@ -36,10 +36,6 @@ var line = d3.svg.line()
 	.y(function(d){
 		return yScaleLine(+d.amount);
 	});
-
-/*var tooltip = d3.select("body")
-	.append("div")
-	.attr("class","tooltip");*/
 
 var svgLine = d3.select("#line")
 	.append("svg")
@@ -70,8 +66,6 @@ data.forEach(function(d,i){
 	});
 
 });
-
-console.log(dataSet);
 
 xScaleLine.domain(
 	d3.extent(years,function(d){
@@ -136,74 +130,6 @@ svgLine.append("text")
     .attr("class","lineLabel")
     .text("2015");
 
-/*svgLine.append("text")  
-    .attr("y", 0 )    
-    .attr("x", - heightLine/2)
-    .attr("class","lineLabel")
-    .style("text-anchor", "middle")
-    .text("Under Five Mortality Rate(per 1000 person)")
-    .attr("transform", "rotate(-90)")
-    .attr("dy", "1em");*/
-
-/*d3.selectAll("g.lines")
-	.attr("stroke", function(d) { 
-		if (d.country === "World"){
-			return "blue";
-		} else if (d.country === "Niger"){
-			return "orange";
-		} else{
-			return "grey"
-		}
-					})
-	.attr("opacity",function(d){
-		if (d.country === "World"){
-			return "1";
-		} else if (d.country === "Niger"){
-			return "1";
-		} else{
-			return "0.1"
-		}
-	})*/
-
-/*groups.append("text")
-    .attr("transform", function(d){
-        if (d.country === "Niger" || d.country === "World") {
-            console.log(d);
-            return "translate(" + (width - margin.right - margin.left + 5) + ", "+ yScale(+d.rates[25].amount) +")";
-                    	}
-
-                    })
-    .attr("dy",".35em")
-    .text(function(d) { 
-        if (d.country==="Niger" || d.country === "World") {
-                    		return d.country;
-                    	}
-                    })
-    .attr("class","highlightCountry");*/
-
-/*groups.append("text")
-    .attr("transform", function(d){
-        if (d.rates[25]) {
-            //console.log(d);
-            return "translate(" + (widthLine - marginLine.right - marginLine.left + 2) + ", "+ yScaleLine(+d.rates[25].amount) +")";
-                    	}
-
-                    })
-    .attr("dy",".35em")
-    .text(function(d) { 
-        if (d.rates[25]) {
-                    		return d.country;
-                    	}
-                    })
-    .attr("class","labelOnLine")
-    .attr("opacity",0);*/
-
-
-
-/*d3.selectAll("g.lines")
-	.on("mouseover",mouseoverFunc)
-	.on("mouseout",mouseoutFunc)
-	.on("mousemove",mousemoveFunc);*/
 
 });
 }//end of draw line function

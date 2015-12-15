@@ -39,10 +39,8 @@ function draw_map(){
 	function getColor(d){
 		var dataRow = countryById.get(d.id);
 		if (dataRow){
-			//console.log(dataRow);
 			return colors(dataRow.rate);
 		} else {
-			//console.log("no dataRow", d);
 			return "#ccc";
 		}
 	}
@@ -50,7 +48,6 @@ function draw_map(){
 	function getText(d){
 		var dataRow = countryById.get(d.id);
 		if (dataRow){
-			//console.log(dataRow);
 			return "<strong>" + dataRow.country + "</strong></br> Under 5 Mortality Rate: " + dataRow.rate + "‰";
 		} else {
 			console.log("no dataRow",d);
@@ -74,14 +71,9 @@ function draw_map(){
 			.attr("id", function (d,i){return d.id;})
 			.attr('d',path)
 			.attr('fill',function(d,i){
-				//console.log(d.properties.name);
 				return getColor(d);
 			})
 			.on("click",onClick);
-			//.append("title")
-			//.text(function(d){
-			//	return getText(d);
-			//});
 
 	var linear = colors;
 
@@ -97,17 +89,6 @@ function draw_map(){
 	svgMap.select(".legendLinear")
 		.call(legendLinear);
 
-	/*$('svg path').tipsy({
-		gravity: 'nw',
-		fade: true,
-		html: true, 
-		title: function() { 
-			console.log(getText(this.__data__));
-			var name = getText(this.__data__)
-			return name;
-		 }
-	});*/
-
 	svgMap.selectAll("path.countries")
     	.on("mouseover", mouseoverFunc)
         .on("mousemove", mousemoveFunc)
@@ -115,7 +96,6 @@ function draw_map(){
 
 
 	function mouseoverFunc(d){
-		//console.log("moused over",getText(d));
 		myTooltipMap
 			.style("display",null)
 			.html("<p>" + getText(d) + "</p>");

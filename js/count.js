@@ -54,7 +54,6 @@ qSVG.selectAll("#txt")
         });
 
 function draw_round(){
-    //var roundRadius = 350;
     var roundScale = d3.scale.linear()
     .range([ 100,350])
     .domain([end_val,start_val]);
@@ -78,7 +77,6 @@ function draw_round(){
 
 draw_round();
 
-d3.select("#round").style("class","focused");
 
 
 
