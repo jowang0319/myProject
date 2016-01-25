@@ -6,11 +6,11 @@ var margin = {top:20,right:10,bottom:50,left:50};
 var colors = d3.scale.category10();
 				
 var colorsNone = function(d) {
-	if (d) {
-		return "grey";
+	if (d === "None") {
+		return "rgba(51,51,153,0.6)";
 	}
 	else { 
-		return "steelblue"; 
+		return "grey"; 
 	}
 };
 
@@ -103,7 +103,7 @@ function draw_circles(data){
 	]);
 
 	var circles = svg.selectAll("circle")
-		.data(data,function(d){return d.country;})
+		.data(data,function(d){return d.country;});
 
 	circles
 		.enter()

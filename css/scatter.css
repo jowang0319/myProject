@@ -20,11 +20,14 @@ circle{
 circle.unfocused{
   fill-opacity: 20%;
   stroke-opacity:20%;
+  r:6px;
 }
 
 circle.focused {
   fill-opacity:100%;
   stroke-opacity:100%;
+  r:9px;
+  fill:rgba(51,51,153,0.6);
 }
 
 circle:hover{
@@ -88,5 +91,11 @@ div#vis {
   z-index: 0;
   margin-left: 0;
   font-size: 10px;
+}
+
+.labelOnCircle{
+  background-color: pink;
+  color:black;
+  display:block;
 }
 
